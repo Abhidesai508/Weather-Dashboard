@@ -59,13 +59,13 @@ $.ajax ({
 function Color(uvValue, colorbgd) {
     var colorbgd = "";
     if (uvValue <= 2) {
-        colorbgd = "#66ff00";
+        colorbgd = "green";
     }
     else if (uvValue <= 5 && uvValue > 2) {
-        colorbgd = "#ffbb00";
+        colorbgd = "yellow";
     }
     else if (uvValue >= 6 && uvValue > 5) {
-        colorbgd = "#FF0000";
+        colorbgd = "red";
     }
     return colorbgd;
 }
