@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+body{
+   background:url('https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    background-repeat: no-repeat;
+    background-size:cover;
+    overflow:hidden;
+    height: 100vh;
+}
+
+header{
+    color: aliceblue;
+    background-color: rgb(38, 38, 38);
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 200px;
+    text-decoration: underline;
+}
+
+h3{
+    font-size: 49px;
+    background-color: #d3e6f1;
+}
+
+.main{
+    padding-bottom: 20px;
+}
+
+.card-body {
+background-color: rgb(61, 128, 252);
+}
+
+.bg-primary{
+    background-color: #fff;
+}
+
+.cbforecast {
+    margin: 20px;
+}
+  
