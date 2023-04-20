@@ -1,42 +1,51 @@
+// API KEY
 var Key = '&appid=64711a3a34371e60842ce5f4745dc7bf';
 
+// Selecting html elements
 var inputElement = document.querySelector('.Entry');
 var searchBtnElement = document.querySelector('.search-button');
 var citiesListElement = document.querySelector(".list");
 
+// Using local storage to get city name
 var city = localStorage.getItem('cityNameStore');
 
+// Getting URL links for current city weather forecast
 var Weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + '&units=imperial' + Key;
 
 var forecasturl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + '&units=imperial' + Key;
+// creating fucntion to create input in local storage
 
 function Citydata() {
     localStorage.setItem('cityNameStore', inputElement.value);
 }
+// Using for loop to create child in city list
 
 for (var i = 0; i < localStorage.length; i++) {
     $(".list").append("<p>" + localStorage.getItem(localStorage.key(i)) + "</p>");
 }
 
+// using ajax method to get url from server side API
 $.ajax ({
     url: Weatherurl,
     method: "GET"
 })
-
+// .THEN (promise) to make call back return function
     .then(function(response) {
 
+        // Adding weather properties 
         $('.city').html("<h2>" + response.name + "</h2>");
         $('.symbol').html("<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png' >");
         $('.breeze').text("Wind Speed: " + response.wind.speed + " MPH");
         $('.humidity').text("Humidity: " + response.main.humidity + "%");
         $(".degree").text("Degree: " + response.main.temp + " F");
 
+        // URL for UV
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
-        var URLUv = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + Key;
+        var URLUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + Key;
 
         $.ajax ({
-            url: URLUv,
+            url: URLUV,
             method: "GET"
         })
             .then(function(response) {
@@ -46,6 +55,7 @@ $.ajax ({
                 $('.UV').css("background-color", Color(uvValue));
             });
         })
+        // Setting color for UV
 function Color(uvValue, colorbgd) {
     var colorbgd = "";
     if (uvValue <= 2) {
@@ -59,7 +69,7 @@ function Color(uvValue, colorbgd) {
     }
     return colorbgd;
 }
-
+// Current date
 var currentDay = moment().format("dddd, D MMMM ");
 
 function date() {
@@ -67,6 +77,7 @@ function date() {
 };
 date();
 
+// 5 days forecast
 $.ajax ({
     url: forecasturl,
     method: "GET"
@@ -111,5 +122,5 @@ $.ajax ({
         $(".day-5-humidity").text("Humidity: " + response.list[32].main.humidity + "%");
 
     });
-
+    // Click event for search button
     searchBtnElement.addEventListener('click', Citydata);
