@@ -8,7 +8,7 @@ I have made weather forecasting app with the help of HTML, CSS, and JavaScirpt. 
 
 Github: https://github.com/Abhidesai508/Weather-Dashboard
 
-Live website:
+Live website: https://abhidesai508.github.io/Weather-Dashboard/?
 
 # Screenshot:
 
