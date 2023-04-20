@@ -11,4 +11,5 @@ Github: https://github.com/Abhidesai508/Weather-Dashboard
 Live website:
 
 # Screenshot:
-![Alt text](../../Weather-Dashboard/Assets/images/Screenshot%202023-04-20%20054139.png)
+
+![Alt text](Assets/Images/Screenshot%202023-04-20%20054139.png)
