@@ -1,5 +1,5 @@
 // API KEY
-var Key = '&appid=64711a3a34371e60842ce5f4745dc7bf';
+var Key = '&appid=a1ec931801edba790d250fdbb6c616d7';
 
 // Selecting html elements
 var inputElement = document.querySelector('.Entry');
@@ -9,11 +9,9 @@ var citiesListElement = document.querySelector(".list");
 // Using local storage to get city name
 var city = localStorage.getItem('cityNameStore');
 
-// Getting URL links for current city weather forecast
 var Weatherurl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + '&units=imperial' + Key;
 
 var forecasturl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + '&units=imperial' + Key;
-// creating fucntion to create input in local storage
 
 function Citydata() {
     localStorage.setItem('cityNameStore', inputElement.value);
@@ -39,7 +37,6 @@ $.ajax ({
         $('.humidity').text("Humidity: " + response.main.humidity + "%");
         $(".degree").text("Degree: " + response.main.temp + " F");
 
-        // URL for UV
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
         var URLUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + Key;
@@ -49,22 +46,22 @@ $.ajax ({
             method: "GET"
         })
             .then(function(response) {
-                var uvValue = response.value
+                var uvInput = response.value
 
                 $('.UV').text("UV: " + response.value);
-                $('.UV').css("background-color", Color(uvValue));
+                $('.UV').css("background-color", Color(uvInput));
             });
         })
         // Setting color for UV
-function Color(uvValue, colorbgd) {
+function Color(uvInput, colorbgd) {
     var colorbgd = "";
-    if (uvValue <= 2) {
+    if (uvInput <= 2) {
         colorbgd = "green";
     }
-    else if (uvValue <= 5 && uvValue > 2) {
+    else if (uvInput <= 5 && uvInput > 2) {
         colorbgd = "yellow";
     }
-    else if (uvValue >= 6 && uvValue > 5) {
+    else if (uvInput >= 6 && uvInput > 5) {
         colorbgd = "red";
     }
     return colorbgd;
